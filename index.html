@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>SIM-AI | Strategic Decision Intelligence</title>
   <!-- Google Fonts & Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<!-- HALAMAN LOGIN (default visible) -->
+<!-- HALAMAN LOGIN -->
 <div id="loginContainer" class="login-container">
   <div class="login-card">
     <div class="login-icon">
@@ -33,7 +33,7 @@
       <button type="submit" class="login-btn"><i class="fas fa-arrow-right-to-bracket"></i> Masuk ke Dashboard</button>
     </form>
     <div class="demo-note">
-      <i class="fas fa-flask"></i> Demo: gunakan email & password apapun / klik langsung
+      <i class="fas fa-flask"></i> Demo: gunakan email & password apapun
     </div>
   </div>
 </div>
@@ -41,10 +41,9 @@
 <!-- MAIN APP (hidden until login) -->
 <div id="appContainer" style="display: none;">
   
-  <!-- SIDEBAR & MAIN LAYOUT -->
   <div class="app-layout">
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="sidebar-logo">
         <i class="fas fa-brain"></i>
         <span>SIM<span>-AI</span></span>
@@ -73,19 +72,24 @@
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      <!-- TOP BAR -->
+      <!-- TOP BAR dengan tombol hamburger -->
       <div class="top-bar">
-        <div class="welcome-text">
-          <h3 id="greetingUser">Selamat datang, <span id="userNameDisplay">CEO</span></h3>
-          <p>AI Decision Intelligence Platform</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="welcome-text">
+            <h3>Selamat datang, <span id="userNameDisplay">CEO</span></h3>
+            <p>AI Decision Intelligence Platform</p>
+          </div>
         </div>
         <div class="top-actions">
-          <i class="fas fa-bell"></i>
+          <i class="fas fa-bell" style="color: #64748b;"></i>
           <div class="avatar"><span id="avatarInitial">C</span></div>
         </div>
       </div>
 
-      <!-- DASHBOARD PAGE (default) -->
+      <!-- DASHBOARD PAGE -->
       <div id="page-dashboard" class="page-content active">
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-simple"></i></div><div><h3>Akurasi Keputusan</h3><div class="stat-value">94<span>%</span></div><p>↑ 12% vs baseline</p></div></div>
@@ -114,7 +118,7 @@
 
       <!-- SIMULASI SKENARIO PAGE -->
       <div id="page-simulasi" class="page-content">
-        <div class="card-full"><h3><i class="fas fa-diagram-project"></i> Simulasi Dampak Keputusan Strategis</h3><div style="display:flex;gap:20px;flex-wrap:wrap;margin:20px 0"><button class="sim-scenario" data-scenario="expansi"><i class="fas fa-globe"></i> Ekspansi Pasar</button><button class="sim-scenario" data-scenario="digital"><i class="fas fa-cloud-upload-alt"></i> Transformasi Digital</button><button class="sim-scenario" data-scenario="restruktur"><i class="fas fa-chart-line"></i> Restrukturisasi Organisasi</button></div><div id="simulasiResult" class="simulasi-result"><i class="fas fa-chart-line"></i>  Klik salah satu skenario untuk simulasi AI & proyeksi KPI.</div></div>
+        <div class="card-full"><h3><i class="fas fa-diagram-project"></i> Simulasi Dampak Keputusan Strategis</h3><div style="display:flex;gap:12px;flex-wrap:wrap;margin:20px 0"><button class="sim-scenario" data-scenario="expansi"><i class="fas fa-globe"></i> Ekspansi Pasar</button><button class="sim-scenario" data-scenario="digital"><i class="fas fa-cloud-upload-alt"></i> Transformasi Digital</button><button class="sim-scenario" data-scenario="restruktur"><i class="fas fa-chart-line"></i> Restrukturisasi</button></div><div id="simulasiResult" class="simulasi-result"><i class="fas fa-chart-line"></i>  Klik salah satu skenario untuk simulasi AI & proyeksi KPI.</div></div>
       </div>
 
       <!-- STRATEGIC INSIGHTS PAGE -->
