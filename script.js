@@ -51,6 +51,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ========== MENU HAMBURGER UNTUK HP ==========
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      sidebar.classList.toggle('open');
+    });
+    
+    // Kalau klik di luar sidebar di HP, tutup otomatis
+    document.addEventListener('click', function(event) {
+      if (window.innerWidth <= 768) {
+        const isClickInsideSidebar = sidebar.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        
+        if (!isClickInsideSidebar && !isClickOnToggle && sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      }
+    });
+  }
+
   // ---------- CHART.JS ----------
   const ctx1 = document.getElementById('behaviorChart')?.getContext('2d');
   if(ctx1) new Chart(ctx1, { type: 'radar', data: { labels: ['Innovasi','Risk','Kolaborasi','Kecepatan','Adaptasi'], datasets: [{ label: 'Tim Eksekutif', data: [85,72,88,79,84], backgroundColor: 'rgba(37,99,235,0.2)', borderColor: '#2563eb' }] } });
@@ -85,6 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => addMessage(reply, false), 400);
     userInput.value = '';
   });
+  if(userInput) {
+    userInput.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') sendBtn.click();
+    });
+  }
 
   // Simulasi skenario generator
   const simBtns = document.querySelectorAll('.sim-scenario');
