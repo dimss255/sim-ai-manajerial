@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>SIM-AI | Strategic Decision Intelligence</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HALAMAN LOGIN (default visible) -->
+<div id="loginContainer" class="login-container">
+  <div class="login-card">
+    <div class="login-icon">
+      <i class="fas fa-brain"></i>
+    </div>
+    <h2>SIM-AI Manajerial</h2>
+    <p class="login-sub">Sistem Informasi Perilaku + AI</p>
+    <form id="loginForm">
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="loginEmail" placeholder="email@perusahaan.com" value="ceo@strategic.ai" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="loginPassword" placeholder="Kata Sandi" value="demo123" required>
+      </div>
+      <button type="submit" class="login-btn"><i class="fas fa-arrow-right-to-bracket"></i> Masuk ke Dashboard</button>
+    </form>
+    <div class="demo-note">
+      <i class="fas fa-flask"></i> Demo: gunakan email & password apapun / klik langsung
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP (hidden until login) -->
+<div id="appContainer" style="display: none;">
+  
+  <!-- SIDEBAR & MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i class="fas fa-brain"></i>
+        <span>SIM<span>-AI</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <i class="fas fa-chart-line"></i> <span>Beranda Strategis</span>
+        </a>
+        <a href="#" class="nav-item" data-page="behavioral">
+          <i class="fas fa-users"></i> <span>Profil Perilaku</span>
+        </a>
+        <a href="#" class="nav-item" data-page="aiadvisor">
+          <i class="fas fa-robot"></i> <span>AI Advisor</span>
+        </a>
+        <a href="#" class="nav-item" data-page="simulasi">
+          <i class="fas fa-flask"></i> <span>Simulasi Skenario</span>
+        </a>
+        <a href="#" class="nav-item" data-page="insights">
+          <i class="fas fa-lightbulb"></i> <span>Strategic Insights</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- TOP BAR -->
+      <div class="top-bar">
+        <div class="welcome-text">
+          <h3 id="greetingUser">Selamat datang, <span id="userNameDisplay">CEO</span></h3>
+          <p>AI Decision Intelligence Platform</p>
+        </div>
+        <div class="top-actions">
+          <i class="fas fa-bell"></i>
+          <div class="avatar"><span id="avatarInitial">C</span></div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD PAGE (default) -->
+      <div id="page-dashboard" class="page-content active">
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-simple"></i></div><div><h3>Akurasi Keputusan</h3><div class="stat-value">94<span>%</span></div><p>↑ 12% vs baseline</p></div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-gauge-high"></i></div><div><h3>Kecepatan Analisis</h3><div class="stat-value">2.4<span>jam</span></div><p>rata-rata realtime</p></div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div><h3>ROI Strategis</h3><div class="stat-value">+27<span>%</span></div><p>dari rekomendasi AI</p></div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-brain"></i></div><div><h3>Bias Terdeteksi</h3><div class="stat-value">12<span>kasus</span></div><p>dimitigasi bulan ini</p></div></div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-card"><h4><i class="fas fa-chart-line"></i> Indeks Perilaku Manajerial (IPM) </h4><canvas id="behaviorChart" width="400" height="200"></canvas></div>
+          <div class="chart-card"><h4><i class="fas fa-chart-pie"></i> Dampak AI terhadap KPI</h4><canvas id="impactChart" width="400" height="200"></canvas></div>
+        </div>
+        <div class="alert-card"><i class="fas fa-robot"></i> <strong>AI Strategic Alert:</strong> Berdasarkan analisis pola rapat 30 hari terakhir, rekomendasi akselerasi inovasi produk direkomendasikan untuk Q3.</div>
+      </div>
+
+      <!-- BEHAVIORAL PAGE -->
+      <div id="page-behavioral" class="page-content">
+        <div class="card-full"><h3><i class="fas fa-chart-user"></i> Behavioral Profiling - Tim Eksekutif</h3><div class="behavior-traits"><div><i class="fas fa-chart-line"></i> Risk Appetite: <strong>Moderat-Agresif</strong> (7.2/10)</div><div><i class="fas fa-people-arrows"></i> Kolaborasi: <strong>Tinggi</strong> (8.4/10)</div><div><i class="fas fa-clock"></i> Kecepatan Keputusan: <strong>76%</strong> lebih cepat dari industri</div><div><i class="fas fa-chart-simple"></i> Bias Kognitif teridentifikasi: <span class="badge">Confirmation Bias</span> <span class="badge">Overconfidence</span></div></div><div class="mt-4"><p>Model AI merekomendasikan debiasing dengan framing alternatif dan nudge reporting.</p></div></div>
+        <div class="card-full mt-4"><h4><i class="fas fa-chart-line"></i> Tren Kinerja & Sentimen </h4><canvas id="sentimentChart" width="100%" height="180"></canvas></div>
+      </div>
+
+      <!-- AI ADVISOR PAGE -->
+      <div id="page-aiadvisor" class="page-content">
+        <div class="advisor-card"><div class="advisor-icon"><i class="fas fa-robot fa-3x"></i></div><div><h2>Asisten Strategis AI</h2><p>Tanyakan skenario strategis atau dapatkan rekomendasi berdasarkan data perilaku manajerial real-time.</p></div></div>
+        <div class="chat-container"><div id="aiChatMessages" class="chat-messages"><div class="ai-message"><i class="fas fa-robot"></i> Halo! Saya SIM-AI Advisor. Skenario apa yang sedang Anda pertimbangkan? (Ekspansi, Digitalisasi, Restruktur, Efisiensi Biaya)</div></div><div class="chat-input-area"><input type="text" id="aiUserInput" placeholder="Contoh: 'Analisis ekspansi ke Asia Tenggara'"><button id="sendChatBtn"><i class="fas fa-paper-plane"></i> Kirim</button></div></div>
+      </div>
+
+      <!-- SIMULASI SKENARIO PAGE -->
+      <div id="page-simulasi" class="page-content">
+        <div class="card-full"><h3><i class="fas fa-diagram-project"></i> Simulasi Dampak Keputusan Strategis</h3><div style="display:flex;gap:20px;flex-wrap:wrap;margin:20px 0"><button class="sim-scenario" data-scenario="expansi"><i class="fas fa-globe"></i> Ekspansi Pasar</button><button class="sim-scenario" data-scenario="digital"><i class="fas fa-cloud-upload-alt"></i> Transformasi Digital</button><button class="sim-scenario" data-scenario="restruktur"><i class="fas fa-chart-line"></i> Restrukturisasi Organisasi</button></div><div id="simulasiResult" class="simulasi-result"><i class="fas fa-chart-line"></i>  Klik salah satu skenario untuk simulasi AI & proyeksi KPI.</div></div>
+      </div>
+
+      <!-- STRATEGIC INSIGHTS PAGE -->
+      <div id="page-insights" class="page-content">
+        <div class="card-full"><h3><i class="fas fa-lightbulb"></i> Rekomendasi Strategis Harian</h3><ul id="insightsList" class="insights-list"><li><i class="fas fa-chart-line"></i> Optimalisasi alokasi R&D berdasarkan behavioral pattern tim.</li><li><i class="fas fa-chart-line"></i> Peluang kolaborasi lintas divisi: indeks kohesi meningkat 12%.</li><li><i class="fas fa-chart-line"></i> Rekomendasi penjadwalan ulang meeting untuk kreativitas.</li></ul></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
